@@ -1,7 +1,7 @@
-import {type NextPage} from "next";
+import { type NextPage } from "next";
 import Head from "next/head";
 import IngredientsList from "../components/IngredientsList/IngredientsList";
-import {ImageUploaderMenu} from "../components/ImageUploaderMenu";
+import { ImageUploaderMenu } from "../components/ImageUploaderMenu";
 
 const Home: NextPage = () => {
   return (
@@ -11,11 +11,18 @@ const Home: NextPage = () => {
         <meta name="description" content="Make recipes with AI" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main style={{backgroundColor: 'red'}} className="flex">
-        <h4>My Ingredients</h4>
-        <div style={{height: '50px'}}></div>
-        <IngredientsList />
-        <ImageUploaderMenu />
+      <main
+        style={{
+          display: "flex",
+        }}
+      >
+        <div style={{ flex: 1 }}>
+          <IngredientsList />
+        </div>
+
+        <div style={{ flex: 1 }}>
+          <ImageUploaderMenu />
+        </div>
       </main>
     </>
   );
