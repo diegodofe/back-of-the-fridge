@@ -10,7 +10,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col">
-        <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
+        <h1 className="tracking-tightsm:text-[5rem] text-5xl font-extrabold">
           Welome to back of the fridge
         </h1>
       </main>

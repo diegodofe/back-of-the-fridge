@@ -10,7 +10,7 @@ const Recipes: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col">
-        <h3 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
+        <h3 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
           Recipes page!
         </h3>
       </main>

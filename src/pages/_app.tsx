@@ -1,28 +1,22 @@
 import { type AppType } from "next/dist/shared/lib/utils";
-import Link from "next/link";
 import type { ReactNode } from "react";
+import { Navbar } from "../components/Navbar";
 import "../styles/globals.css";
 
-const Navbar = () => {
+export function ImageUploaderMenu() {
   return (
-    <nav className="flex flex-col gap-8 p-2">
-      <ul>
-        <li className="text-white">
-          <Link href="/">Home</Link>
-        </li>
-        <li className="text-white">
-          <Link href="/recipes">Recipes</Link>
-        </li>
-      </ul>
-    </nav>
+    <div className="flex-1 p-8">
+      <h1>Upload another image</h1>
+    </div>
   );
-};
+}
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="flex min-h-screen bg-gradient-to-b from-[#2e026d] to-[#15162c]">
+    <div className="flex min-h-screen">
       <Navbar />
-      <main className="min-w-full p-8">{children}</main>
+      <main className="flex-2 p-8">{children}</main>
+      <ImageUploaderMenu />
     </div>
   );
 };
@@ -30,7 +24,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <Layout>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </Layout>
   );
 };
