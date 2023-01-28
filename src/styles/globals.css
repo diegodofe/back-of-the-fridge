@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.navbar {
+  background-color: #95a5a6;
+  max-width: 150px;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar__item {
+  padding: 5px 15px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.navbar__item:hover {
+  background-color: #00784A;
+  color: white;
+}

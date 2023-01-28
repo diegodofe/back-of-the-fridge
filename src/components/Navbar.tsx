@@ -2,16 +2,13 @@ import Link from "next/link";
 import React from "react";
 
 export const Navbar = () => {
+
   return (
-    <nav className="flex flex-col gap-8 p-8">
-      <ul>
-        <li>
-          <Link href="/">Home</Link>
-        </li>
-        <li>
-          <Link href="/recipes">Recipes</Link>
-        </li>
-      </ul>
-    </nav>
+    <nav className="navbar" style={{maxWidth: '150px'}}>
+      <img src="logo.png" alt="logo" />
+      <div style={{height: '20px'}}></div>
+      <Link className="navbar__item" href="/">Home</Link>
+      <Link className="navbar__item" href="/recipes">Recipes</Link>
+    </nav >
   );
 };

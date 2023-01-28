@@ -1,34 +1,36 @@
-import React from 'react'
+import React from 'react';
 import Ingredient from './Ingreditent';
+import {Button, Space} from 'antd';
 
 function IngredientsList() {
 
-  const [ingredients, setIngredients] = React.useState<string[]>([])
-  const [newIngredient, setNewIngredient] = React.useState<string>('')
+  const [ingredients, setIngredients] = React.useState<string[]>([]);
+  const [newIngredient, setNewIngredient] = React.useState<string>('');
 
   const handleDeleteIngredient = (index: number) => {
-    const newIngredients = [...ingredients]
-    newIngredients.splice(index, 1)
-    setIngredients(newIngredients)
-  }
+    const newIngredients = [...ingredients];
+    newIngredients.splice(index, 1);
+    setIngredients(newIngredients);
+  };
 
   const handleAddIngredient = () => {
-    setIngredients([...ingredients, newIngredient])
-    setNewIngredient('')
-  }
+    setIngredients([...ingredients, newIngredient]);
+    setNewIngredient('');
+  };
 
   const handleAddIngredientForm = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
 
   return (
     <div>
       <h2>Ingredients</h2>
+      <div style={{height: "50px"}} />
       <ul>
         {ingredients.map((ingredient, index) => (
-          <Ingredient 
+          <Ingredient
             // eslint-disable-next-line react/no-array-index-key
-            key={index}  
+            key={index}
             index={index}
             ingredient={ingredient}
             handleDeleteIngredient={handleDeleteIngredient}
@@ -36,19 +38,19 @@ function IngredientsList() {
         ))}
       </ul>
       <form onSubmit={handleAddIngredientForm}>
-      <input type="text"
-        onChange={(e) => {
-          setNewIngredient(e.target.value)
-        }}
-        value={newIngredient}
-      />
-      <button
-        type="submit"
-        onClick={handleAddIngredient}
-        value={newIngredient}
-      >
-        Add Ingredient
-      </button>
+        <input type="text"
+          onChange={(e) => {
+            setNewIngredient(e.target.value);
+          }}
+          value={newIngredient}
+        />
+        <button
+          type="submit"
+          onClick={handleAddIngredient}
+          value={newIngredient}
+        >
+          Add Ingredient
+        </button>
       </form>
     </div>
   );
