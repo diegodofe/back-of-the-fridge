@@ -1,21 +1,29 @@
-import { CoffeeOutlined } from "@ant-design/icons";
-import { Avatar, Skeleton } from "antd";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { Image, Skeleton } from "antd";
+
 import useRecipes from "../hooks/useRecipes";
 import type { Recipe } from "../types/recipe";
-import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const RecipeThumbnail = ({ recipe }: { recipe: Recipe }) => {
   const numIngredients = recipe.ingredients.length;
-  const numDirections = recipe.directions.length;
+  const numSteps = recipe.directions.length;
   return (
-    <div className="flex cursor-pointer items-center gap-2 border-2 border-gray-600 p-8 ">
-      <Avatar size="small" icon={<CoffeeOutlined />} />
-      <p>
-        <span>{numDirections}</span> directions
-      </p>
-      <p>
-        <span>{numIngredients}</span> ingredients
-      </p>
+    <div className="flex flex-col">
+      <Image
+        src={"https://picsum.photos/500"}
+        alt={recipe.title + "photo"}
+        style={{ objectFit: "cover", maxHeight: 200 }}
+        preview={false}
+      />
+
+      <div className="flex justify-evenly p-4">
+        <p>
+          <span className="font-extrabold">{numSteps}</span> steps
+        </p>
+        <p>
+          <span className="font-extrabold">{numIngredients}</span> ingredients
+        </p>
+      </div>
     </div>
   );
 };
@@ -43,9 +51,20 @@ export const RecipeList = ({
   if (!recipes.length) return null;
 
   return (
-    <div ref={ref} className="flex flex-col gap-4">
+    <div
+      ref={ref}
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+        gap: 16,
+      }}
+    >
       {recipes.map((recipe) => (
-        <div key={recipe.title} onClick={() => onRecipeSelect(recipe)}>
+        <div
+          className="cursor-pointer overflow-auto rounded-md border-2 border-gray-400 hover:shadow-md"
+          key={recipe.title}
+          onClick={() => onRecipeSelect(recipe)}
+        >
           <RecipeThumbnail recipe={recipe} />
         </div>
       ))}

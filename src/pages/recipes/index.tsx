@@ -19,7 +19,7 @@ const Recipes: NextPage = () => {
       </Head>
       <main className="flex">
         <div className="flex flex-1 flex-col p-12">
-          <h2>Your recipes</h2>
+          <h3 className="mb-6 text-2xl font-bold">Your recipes</h3>
 
           <RecipeList onRecipeSelect={setSelectedRecipe} />
         </div>

@@ -1,16 +1,16 @@
 import React from "react";
-import {InboxOutlined, UploadOutlined} from "@ant-design/icons";
-import type {UploadProps} from "antd";
-import {message, Upload} from "antd";
+import { InboxOutlined, UploadOutlined } from "@ant-design/icons";
+import type { UploadProps } from "antd";
+import { message, Upload } from "antd";
 
-const {Dragger} = Upload;
+const { Dragger } = Upload;
 
 const props: UploadProps = {
   name: "file",
   multiple: true,
   action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
   onChange(info) {
-    const {status} = info.file;
+    const { status } = info.file;
     if (status !== "uploading") {
       console.log(info.file, info.fileList);
     }
@@ -28,17 +28,18 @@ const props: UploadProps = {
 export function ImageUploaderMenu() {
   return (
     <div className="image-uploader">
-      <h2 className='ingredients-page__title'>Upload Image</h2>
+      <h2 className="ingredients-page__title">Upload an image</h2>
       <Dragger {...props}>
         <p className="ant-upload-drag-icon">
-          <InboxOutlined />
+          <InboxOutlined style={{ color: "green" }} />
         </p>
         <p className="ant-upload-text">
           Click or drag file to this area to upload
         </p>
       </Dragger>
-      <button className='upload-button'>
-        Upload <div style={{width: '5px'}}></div><UploadOutlined />
+      <button className="upload-button">
+        Upload <div style={{ width: "5px" }}></div>
+        <UploadOutlined />
       </button>
     </div>
   );
