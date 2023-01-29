@@ -1,14 +1,15 @@
-import React from 'react';
-import Ingredient from './Ingreditent';
-import {Button, Space} from 'antd';
-import {useAutoAnimate} from '@formkit/auto-animate/react';
-import {PlusCircleOutlined} from '@ant-design/icons';
+import { PlusCircleOutlined } from "@ant-design/icons";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { useState } from "react";
+import Ingredient from "./Ingreditent";
 
-function IngredientsList() {
-
-  const [ingredients, setIngredients] = React.useState<string[]>([]);
-  const [newIngredient, setNewIngredient] = React.useState<string>('');
-  const [loading, setIsLoading] = React.useState<boolean>(false);
+function IngredientsList({
+  onGenerateRecipe,
+}: {
+  onGenerateRecipe: () => void;
+}) {
+  const [ingredients, setIngredients] = useState<string[]>([]);
+  const [newIngredient, setNewIngredient] = useState<string>("");
   const [ref] = useAutoAnimate<HTMLElement>();
 
   const handleDeleteIngredient = (index: number) => {
@@ -20,27 +21,14 @@ function IngredientsList() {
   const handleAddIngredient = () => {
     if (newIngredient.length > 0) {
       setIngredients([...ingredients, newIngredient]);
-      setNewIngredient('');
+      setNewIngredient("");
     }
   };
 
-  const handleAddIngredientForm = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  };
-
-  const handleGenerateRecipe = () => {
-    console.log('generate recipe');
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      console.log('done');
-    }, 2000);
-  };
-
   return (
-    <React.Fragment>
-      <div ref={ref} className='ingredients-page'>
-        <h2 className='ingredients-page__title'>Input My Ingredients</h2>
+    <>
+      <div ref={ref} className="ingredients-page">
+        <h2 className="ingredients-page__title">Input My Ingredients</h2>
         {ingredients.map((ingredient, index) => (
           <Ingredient
             // eslint-disable-next-line react/no-array-index-key
@@ -52,12 +40,11 @@ function IngredientsList() {
         ))}
 
         <form
-          className='add-ingredient-form'
-          onSubmit={handleAddIngredientForm}
-
+          className="add-ingredient-form"
+          onSubmit={(e) => e.preventDefault()}
         >
           <input
-            className='add-ingredient-form__input'
+            className="add-ingredient-form__input"
             type="text"
             onChange={(e) => {
               setNewIngredient(e.target.value);
@@ -65,23 +52,23 @@ function IngredientsList() {
             value={newIngredient}
             placeholder="e.g: apple, onion, etc..."
           />
-          <div style={{width: '5px'}} />
+          <div style={{ width: "5px" }} />
           <button
-            className='add-ingredient-form__button'
+            className="add-ingredient-form__button"
             type="submit"
             onClick={handleAddIngredient}
             value={newIngredient}
           >
             <PlusCircleOutlined />
-            <div style={{width: '5px'}} />
+            <div style={{ width: "5px" }} />
             Add
           </button>
         </form>
-        <button className='generate-button' onClick={handleGenerateRecipe}>
+        <button className="generate-button" onClick={onGenerateRecipe}>
           Generate Recipe
         </button>
       </div>
-    </React.Fragment>
+    </>
   );
 }
 
