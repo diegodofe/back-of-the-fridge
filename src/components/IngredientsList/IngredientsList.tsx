@@ -1,16 +1,18 @@
-import {PlusCircleOutlined} from "@ant-design/icons";
-import {useAutoAnimate} from "@formkit/auto-animate/react";
-import {useState} from "react";
+import { PlusCircleOutlined } from "@ant-design/icons";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { useState } from "react";
 import Ingredient from "./Ingreditent";
 
 function IngredientsList({
   onGenerateRecipe,
 }: {
-  onGenerateRecipe: (ingredients: string[]) => Promise<void>;
+  onGenerateRecipe: (ingredients: string[]) => void;
 }) {
   const [ingredients, setIngredients] = useState<string[]>([]);
   const [newIngredient, setNewIngredient] = useState<string>("");
   const [ref] = useAutoAnimate<HTMLElement>();
+
+  const disableSubmit = ingredients.length === 0;
 
   const handleDeleteIngredient = (index: number) => {
     const newIngredients = [...ingredients];
@@ -26,12 +28,7 @@ function IngredientsList({
   };
 
   const handleGenerateRecepit = () => {
-    onGenerateRecipe(ingredients).then(() => {
-      setIngredients([]);
-      setNewIngredient("");
-    }).catch((e) => {
-      console.error(e);
-    });
+    onGenerateRecipe(ingredients);
   };
 
   return (
@@ -40,8 +37,7 @@ function IngredientsList({
         <h2 className="ingredients-page__title">Input your ingredients</h2>
         {ingredients.map((ingredient, index) => (
           <Ingredient
-            // eslint-disable-next-line react/no-array-index-key
-            key={index}
+            key={ingredient}
             index={index}
             ingredient={ingredient}
             handleDeleteIngredient={handleDeleteIngredient}
@@ -61,7 +57,7 @@ function IngredientsList({
             value={newIngredient}
             placeholder="e.g: apple, onion, etc..."
           />
-          <div style={{width: "5px"}} />
+          <div style={{ width: "5px" }} />
           <button
             className="add-ingredient-form__button"
             type="submit"
@@ -69,11 +65,15 @@ function IngredientsList({
             value={newIngredient}
           >
             <PlusCircleOutlined />
-            <div style={{width: "5px"}} />
+            <div style={{ width: "5px" }} />
             Add
           </button>
         </form>
-        <button className="generate-button" onClick={handleGenerateRecepit}>
+        <button
+          disabled={disableSubmit}
+          className={disableSubmit ? "button-disabled" : "button-enabled"}
+          onClick={handleGenerateRecepit}
+        >
           Generate Recipe
         </button>
       </div>
