@@ -38,7 +38,7 @@ export function ImageUploaderMenu() {
         </p>
       </Dragger>
       <button className='upload-button'>
-        Upload <UploadOutlined />
+        Upload <div style={{width: '5px'}}></div><UploadOutlined />
       </button>
     </div>
   );
