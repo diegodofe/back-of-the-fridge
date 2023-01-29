@@ -27,7 +27,6 @@ body {
 .navbar__header {
   font-size: 12px;
   font-weight: 200;
-  color: ;
   margin-left: 10px;
   color: #95a5a6;
 }
@@ -84,13 +83,21 @@ body {
 }
 
 .add-ingredient-form__button {
-  background-color: #009432;
+  background-color: #bdc3c7;
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-ingredient-form__button:hover {
+  background-color: #727e86;
+  color: white;
 }
 
 .ingredient-item__header {
@@ -125,6 +132,49 @@ body {
 .trash-icon {
   color: #e74c3c;
   font-size: 25px;
+}
+
+.generate-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  background-color: #009432;
+  color: white;
+  font-size: 24px;
+  font-weight: 400;
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 15px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.upload-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  background-color: #bdc3c7;
+  color: white;
+  font-size: 24px;
+  font-weight: 400;
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 15px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.upload-button:hover {
+  background-color: #727e86;
+}
+
+
+.generate-button:hover {
+  background-color: #006823;
 }
 
 .image-uploader {

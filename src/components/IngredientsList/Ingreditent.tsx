@@ -1,4 +1,5 @@
 import {DeleteFilled} from '@ant-design/icons';
+import {useAutoAnimate} from '@formkit/auto-animate/react';
 import React from 'react';
 
 interface IngredientProps {
@@ -10,6 +11,7 @@ interface IngredientProps {
 function Ingredient({index, ingredient, handleDeleteIngredient}: IngredientProps) {
 
   const [mouseIsIn, setMouseIsIn] = React.useState<boolean>(false);
+  const [ref] = useAutoAnimate<HTMLElement>();
 
   const handleMouseEnter = () => {
     setMouseIsIn(true);
@@ -20,7 +22,7 @@ function Ingredient({index, ingredient, handleDeleteIngredient}: IngredientProps
   };
 
   return (
-    <div className='ingredient-item' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div ref={ref} className='ingredient-item' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className='ingredient-item__text'>
         {ingredient}
       </div>
