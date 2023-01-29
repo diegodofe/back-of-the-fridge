@@ -42,14 +42,17 @@ export function ImageUploaderMenu({
   return (
     <div className="image-uploader">
       <h2 className="ingredients-page__title">Upload an image</h2>
-      <Dragger {...props}>
-        <p className="ant-upload-drag-icon">
-          <InboxOutlined style={{ color: "green" }} />
-        </p>
-        <p className="ant-upload-text">
-          Click or drag file to this area to upload
-        </p>
-      </Dragger>
+
+      <div className={noFiles ? "" : "mb-6"}>
+        <Dragger {...props}>
+          <p className="ant-upload-drag-icon">
+            <InboxOutlined style={{ color: "green" }} />
+          </p>
+          <p className="ant-upload-text">
+            Click or drag file to this area to upload
+          </p>
+        </Dragger>
+      </div>
       <button
         disabled={noFiles}
         onClick={handleUploadImage}

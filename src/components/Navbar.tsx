@@ -67,7 +67,7 @@ export const Navbar = () => {
           <div className="navbar__item__icon">
             <TeamOutlined />
           </div>
-          About Us
+          About us
         </div>
       </nav>
     </React.Fragment>
