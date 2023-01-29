@@ -10,7 +10,7 @@ export const Navbar = () => {
         <img src="logo2.png" alt="logo" />
       </div>
       <div style={{height: '20px'}}></div>
-      <div className="navbar__header">CONTENT</div>
+      <div className="navbar__header">content</div>
       <Link className="navbar__item" href="/">
         <div className="navbar__item__icon">
           <CoffeeOutlined />
@@ -21,6 +21,8 @@ export const Navbar = () => {
           <DatabaseFilled />
         </div>
         Recipes</Link>
+      <div style={{height: '10px'}}></div>
+      <div className="navbar__header">about</div>
       <Link className="navbar__item" href="/recipes">
         <div className="navbar__item__icon">
           <QuestionOutlined />
@@ -31,6 +33,6 @@ export const Navbar = () => {
           <TeamOutlined />
         </div>
         About Us</Link>
-    </nav >
+    </nav>
   );
 };
