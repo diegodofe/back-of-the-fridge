@@ -1,5 +1,5 @@
 import React from "react";
-import {InboxOutlined} from "@ant-design/icons";
+import {InboxOutlined, UploadOutlined} from "@ant-design/icons";
 import type {UploadProps} from "antd";
 import {message, Upload} from "antd";
 
@@ -37,6 +37,9 @@ export function ImageUploaderMenu() {
           Click or drag file to this area to upload
         </p>
       </Dragger>
+      <button className='upload-button'>
+        Upload <UploadOutlined />
+      </button>
     </div>
   );
 }
