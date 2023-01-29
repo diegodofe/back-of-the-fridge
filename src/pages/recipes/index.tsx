@@ -13,11 +13,23 @@ const Recipes: NextPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const data = router.query as unknown as Recipe;
+    const data = router.query;
     const invalidQuery =
       !data?.directions || !data?.ingredients || !data?.title;
     if (invalidQuery) return;
-    setSelectedRecipe(data);
+
+    const ingredientsType = typeof data.ingredients;
+
+    const ingredients =
+      ingredientsType === "string"
+        ? (data.ingredients as string).split(",")
+        : (data.ingredients as string[]);
+
+    setSelectedRecipe({
+      title: data.title as string,
+      ingredients,
+      directions: data.directions as string[],
+    });
   }, [router.query]);
 
   console.log(selectedRecipe);

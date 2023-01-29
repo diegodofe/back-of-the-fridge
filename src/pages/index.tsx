@@ -2,18 +2,21 @@ import axios from "axios";
 import { type NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ImageUploaderMenu } from "../components/ImageUploaderMenu";
 import IngredientsList from "../components/IngredientsList/IngredientsList";
 import { LoaderOverlay } from "../components/LoaderOverlay";
 import OrDivider from "../components/OrDivider";
 import type { Recipe } from "../types/recipe";
 import { message } from "antd";
+import { UserContext } from "./_app";
+import { createRecipe } from "../services/recipe";
 
 const url =
   "https://mchacksbackend.vercel.app/cohereAdapterController/generatesampleprompt";
 
 const Home: NextPage = () => {
+  const user = useContext(UserContext);
   const router = useRouter();
   const [showLoader, setShowLoader] = useState<boolean>(false);
   const [messageApi, contextHolder] = message.useMessage();
@@ -28,9 +31,13 @@ const Home: NextPage = () => {
       .then((res) => {
         if (res.status === 200) {
           const createdRecipe = res.data as unknown as Recipe;
-          void router.push({
-            pathname: "/recipes",
-            query: { ...createdRecipe },
+
+          void createRecipe(user.id, createdRecipe).then((docRef) => {
+            const docId = docRef.id;
+            void router.push({
+              pathname: "/recipes",
+              query: { ...createdRecipe },
+            });
           });
         }
       })
