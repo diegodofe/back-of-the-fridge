@@ -21,10 +21,14 @@ const RecipeThumbnail = ({ recipe }: { recipe: Recipe }) => {
 
         <div className="flex justify-evenly">
           <p>
-            <span className="font-extrabold">{numSteps}</span> steps
+            <span className="font-extrabold text-green-700">{numSteps}</span>{" "}
+            steps
           </p>
           <p>
-            <span className="font-extrabold">{numIngredients}</span> ingredients
+            <span className="font-extrabold text-green-700">
+              {numIngredients}
+            </span>{" "}
+            ingredients
           </p>
         </div>
       </div>
