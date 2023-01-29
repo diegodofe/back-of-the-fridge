@@ -59,7 +59,9 @@ export const RecipeList = ({
       ref={ref}
       style={{
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(250px, 0.5fr))",
+        gridTemplateColumns: `repeat(auto-fit, minmax(250px, ${
+          recipes.length > 1 ? "1fr" : "0.5fr"
+        }))`,
         gap: 16,
       }}
     >

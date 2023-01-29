@@ -4,14 +4,20 @@ import {
   QuestionOutlined,
   TeamOutlined,
 } from "@ant-design/icons";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 import Link from "next/link";
 import React from "react";
+import useRecipes from "../hooks/useRecipes";
 import AboutUsOverlay from "./AboutUsOverlay";
 import HowItWorks from "./HowItWorks";
 
 export const Navbar = () => {
   const [howModalOpen, setHowModalOpen] = React.useState(false);
   const [aboutModalOpen, setAboutModalOpen] = React.useState(false);
+  const { recipes } = useRecipes();
+  const [ref] = useAutoAnimate<HTMLElement>();
+
+  const hasRecipes = recipes.length > 0;
 
   const handleOpenHowModal = () => {
     console.log("open how modal");
@@ -39,12 +45,16 @@ export const Navbar = () => {
           </div>
           Home
         </Link>
-        <Link className="navbar__item" href="/recipes">
-          <div className="navbar__item__icon">
-            <DatabaseFilled />
-          </div>
-          Recipes
-        </Link>
+        <div ref={ref}>
+          {hasRecipes && (
+            <Link className="navbar__item" href="/recipes">
+              <div className="navbar__item__icon">
+                <DatabaseFilled />
+              </div>
+              Recipes
+            </Link>
+          )}
+        </div>
         <div style={{ height: "10px" }}></div>
         <div className="navbar__header">about</div>
         <div onClick={handleOpenHowModal} className="navbar__item">

@@ -44,7 +44,7 @@ const Recipes: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col">
-        <div className="flex-1 p-12">
+        <div className=" p-12">
           <div ref={ref}>
             <RecipeDetails
               key={selectedRecipe?.title}
@@ -53,7 +53,7 @@ const Recipes: NextPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col p-12">
+        <div className="flex flex-col p-12">
           <h3 className="mb-6 text-2xl font-bold">Your recipes</h3>
 
           <RecipeList onRecipeSelect={setSelectedRecipe} />
