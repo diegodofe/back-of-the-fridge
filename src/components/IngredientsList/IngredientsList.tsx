@@ -14,8 +14,10 @@ function IngredientsList() {
   };
 
   const handleAddIngredient = () => {
-    setIngredients([...ingredients, newIngredient]);
-    setNewIngredient('');
+    if (newIngredient.length > 0) {
+      setIngredients([...ingredients, newIngredient]);
+      setNewIngredient('');
+    }
   };
 
   const handleAddIngredientForm = (e: React.FormEvent<HTMLFormElement>) => {
@@ -23,36 +25,42 @@ function IngredientsList() {
   };
 
   return (
-    <div>
-      <h2>Ingredients</h2>
-      <div style={{height: "50px"}} />
-      <ul>
-        {ingredients.map((ingredient, index) => (
-          <Ingredient
-            // eslint-disable-next-line react/no-array-index-key
-            key={index}
-            index={index}
-            ingredient={ingredient}
-            handleDeleteIngredient={handleDeleteIngredient}
-          />
-        ))}
-      </ul>
-      <form onSubmit={handleAddIngredientForm}>
-        <input type="text"
+    <div className='ingredients-page'>
+      <h2 className='ingredients-page__title'>Input My Ingredients</h2>
+      {ingredients.map((ingredient, index) => (
+        <Ingredient
+          // eslint-disable-next-line react/no-array-index-key
+          key={index}
+          index={index}
+          ingredient={ingredient}
+          handleDeleteIngredient={handleDeleteIngredient}
+        />
+      ))}
+      <form
+        className='add-ingredient-form'
+        onSubmit={handleAddIngredientForm}
+
+      >
+        <input
+          className='add-ingredient-form__input'
+          type="text"
           onChange={(e) => {
             setNewIngredient(e.target.value);
           }}
           value={newIngredient}
+          placeholder="e.g: apple, onion, etc..."
         />
+        <div style={{width: '5px'}} />
         <button
+          className='add-ingredient-form__button'
           type="submit"
           onClick={handleAddIngredient}
           value={newIngredient}
         >
-          Add Ingredient
+          Add
         </button>
       </form>
-    </div>
+    </div >
   );
 }
 

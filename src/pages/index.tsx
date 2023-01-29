@@ -1,7 +1,8 @@
-import { type NextPage } from "next";
+import {type NextPage} from "next";
 import Head from "next/head";
 import IngredientsList from "../components/IngredientsList/IngredientsList";
-import { ImageUploaderMenu } from "../components/ImageUploaderMenu";
+import {ImageUploaderMenu} from "../components/ImageUploaderMenu";
+import OrDivider from "../components/OrDivider";
 
 const Home: NextPage = () => {
   return (
@@ -16,11 +17,11 @@ const Home: NextPage = () => {
           display: "flex",
         }}
       >
-        <div style={{ flex: 1 }}>
+        <div style={{flex: 1}}>
           <IngredientsList />
         </div>
-
-        <div style={{ flex: 1 }}>
+        <OrDivider />
+        <div style={{flex: 1}}>
           <ImageUploaderMenu />
         </div>
       </main>
