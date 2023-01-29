@@ -16,9 +16,9 @@ export const fakeRecipes: Recipe[] = [
     directions: [
       "Preheat oven to 375 degrees F (190 degrees C)",
       "In a large bowl, combine chicken, potatoes, onion, green pepper, garlic, olive oil, salt, and black pepper",
-      " Transfer the mixture to a 9x13 inch baking dish",
-      " Bake for 30-40 minutes, or until chicken is cooked through and potatoes are tender",
-      " Serve with a side salad or steamed vegetables,",
+      "Transfer the mixture to a 9x13 inch baking dish",
+      "Bake for 30-40 minutes, or until chicken is cooked through and potatoes are tender",
+      "Serve with a side salad or steamed vegetables,",
     ],
   },
   {
@@ -36,9 +36,9 @@ export const fakeRecipes: Recipe[] = [
     directions: [
       "Preheat oven to 375 degrees F (190 degrees C)",
       "In a large bowl, combine chicken, potatoes, onion, green pepper, garlic, olive oil, salt, and black pepper",
-      " Transfer the mixture to a 9x13 inch baking dish",
-      " Bake for 30-40 minutes, or until chicken is cooked through and potatoes are tender",
-      " Serve with a side salad or steamed vegetables,",
+      "Transfer the mixture to a 9x13 inch baking dish",
+      "Bake for 30-40 minutes, or until chicken is cooked through and potatoes are tender",
+      "Serve with a side salad or steamed vegetables,",
     ],
   },
   {
@@ -56,9 +56,9 @@ export const fakeRecipes: Recipe[] = [
     directions: [
       "Preheat oven to 375 degrees F (190 degrees C)",
       "In a large bowl, combine chicken, potatoes, onion, green pepper, garlic, olive oil, salt, and black pepper",
-      " Transfer the mixture to a 9x13 inch baking dish",
-      " Bake for 30-40 minutes, or until chicken is cooked through and potatoes are tender",
-      " Serve with a side salad or steamed vegetables,",
+      "Transfer the mixture to a 9x13 inch baking dish",
+      "Bake for 30-40 minutes, or until chicken is cooked through and potatoes are tender",
+      "Serve with a side salad or steamed vegetables,",
     ],
   },
   {
@@ -76,9 +76,9 @@ export const fakeRecipes: Recipe[] = [
     directions: [
       "Preheat oven to 375 degrees F (190 degrees C)",
       "In a large bowl, combine chicken, potatoes, onion, green pepper, garlic, olive oil, salt, and black pepper",
-      " Transfer the mixture to a 9x13 inch baking dish",
-      " Bake for 30-40 minutes, or until chicken is cooked through and potatoes are tender",
-      " Serve with a side salad or steamed vegetables,",
+      "Transfer the mixture to a 9x13 inch baking dish",
+      "Bake for 30-40 minutes, or until chicken is cooked through and potatoes are tender",
+      "Serve with a side salad or steamed vegetables,",
     ],
   },
   {
@@ -96,9 +96,9 @@ export const fakeRecipes: Recipe[] = [
     directions: [
       "Preheat oven to 375 degrees F (190 degrees C)",
       "In a large bowl, combine chicken, potatoes, onion, green pepper, garlic, olive oil, salt, and black pepper",
-      " Transfer the mixture to a 9x13 inch baking dish",
-      " Bake for 30-40 minutes, or until chicken is cooked through and potatoes are tender",
-      " Serve with a side salad or steamed vegetables,",
+      "Transfer the mixture to a 9x13 inch baking dish",
+      "Bake for 30-40 minutes, or until chicken is cooked through and potatoes are tender",
+      "Serve with a side salad or steamed vegetables,",
     ],
   },
 ];

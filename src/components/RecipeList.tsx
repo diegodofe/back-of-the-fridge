@@ -43,7 +43,7 @@ export const RecipeList = ({
   if (!recipes.length) return null;
 
   return (
-    <div ref={ref} className="flex flex-col gap-8">
+    <div ref={ref} className="flex flex-col gap-4">
       {recipes.map((recipe) => (
         <div key={recipe.title} onClick={() => onRecipeSelect(recipe)}>
           <RecipeThumbnail recipe={recipe} />
