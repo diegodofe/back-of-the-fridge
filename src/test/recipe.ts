@@ -22,7 +22,7 @@ export const fakeRecipes: Recipe[] = [
     ],
   },
   {
-    title: "Chicken Potato Surprise",
+    title: "Lasagna",
     ingredients: [
       "1 lb. boneless, skinless chicken breast, cut into bite-sized pieces",
       "1/2 lb. red potatoes",
@@ -42,7 +42,7 @@ export const fakeRecipes: Recipe[] = [
     ],
   },
   {
-    title: "Chicken Potato Surprise",
+    title: "Pizza",
     ingredients: [
       "1 lb. boneless, skinless chicken breast, cut into bite-sized pieces",
       "1/2 lb. red potatoes",
@@ -62,7 +62,7 @@ export const fakeRecipes: Recipe[] = [
     ],
   },
   {
-    title: "Chicken Potato Surprise",
+    title: "Pasta",
     ingredients: [
       "1 lb. boneless, skinless chicken breast, cut into bite-sized pieces",
       "1/2 lb. red potatoes",
@@ -82,7 +82,7 @@ export const fakeRecipes: Recipe[] = [
     ],
   },
   {
-    title: "Chicken Potato Surprise",
+    title: "Soup",
     ingredients: [
       "1 lb. boneless, skinless chicken breast, cut into bite-sized pieces",
       "1/2 lb. red potatoes",

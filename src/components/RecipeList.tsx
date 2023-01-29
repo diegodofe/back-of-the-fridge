@@ -2,12 +2,13 @@ import { CoffeeOutlined } from "@ant-design/icons";
 import { Avatar, Skeleton } from "antd";
 import useRecipes from "../hooks/useRecipes";
 import type { Recipe } from "../types/recipe";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const RecipeThumbnail = ({ recipe }: { recipe: Recipe }) => {
   const numIngredients = recipe.ingredients.length;
   const numDirections = recipe.directions.length;
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex cursor-pointer items-center gap-2 border-2 border-gray-600 p-8 ">
       <Avatar size="small" icon={<CoffeeOutlined />} />
       <p>
         <span>{numDirections}</span> directions
@@ -19,8 +20,13 @@ const RecipeThumbnail = ({ recipe }: { recipe: Recipe }) => {
   );
 };
 
-export const RecipeList = () => {
+export const RecipeList = ({
+  onRecipeSelect,
+}: {
+  onRecipeSelect: (selectedRecipe: Recipe) => void;
+}) => {
   const { recipes, isLoading } = useRecipes();
+  const [ref] = useAutoAnimate<HTMLElement>();
 
   if (isLoading) {
     return (
@@ -37,9 +43,11 @@ export const RecipeList = () => {
   if (!recipes.length) return null;
 
   return (
-    <div>
+    <div ref={ref} className="flex flex-col gap-8">
       {recipes.map((recipe) => (
-        <RecipeThumbnail key={recipe.title} recipe={recipe} />
+        <div key={recipe.title} onClick={() => onRecipeSelect(recipe)}>
+          <RecipeThumbnail recipe={recipe} />
+        </div>
       ))}
     </div>
   );

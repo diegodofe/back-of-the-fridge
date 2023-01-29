@@ -1,7 +1,10 @@
 import React from "react";
 import type { Recipe } from "../types/recipe";
 
-export const RecipeDetails = ({ recipe }: { recipe: Recipe }) => {
+export const RecipeDetails = ({ recipe }: { recipe: Recipe | undefined }) => {
+  if (!recipe) {
+    return <p>Select a recipe</p>;
+  }
   return (
     <div className="flex flex-col gap-8">
       <h4>{recipe.title}</h4>
