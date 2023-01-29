@@ -13,7 +13,7 @@ export const fakeRecipes: Recipe[] = [
       "1/2 tsp salt",
       "1/4 tsp. black pepper",
     ],
-    directions: [
+    steps: [
       "Preheat oven to 375 degrees F (190 degrees C)",
       "In a large bowl, combine chicken, potatoes, onion, green pepper, garlic, olive oil, salt, and black pepper",
       "Transfer the mixture to a 9x13 inch baking dish",
@@ -33,7 +33,7 @@ export const fakeRecipes: Recipe[] = [
       "1/2 tsp salt",
       "1/4 tsp. black pepper",
     ],
-    directions: [
+    steps: [
       "Preheat oven to 375 degrees F (190 degrees C)",
       "In a large bowl, combine chicken, potatoes, onion, green pepper, garlic, olive oil, salt, and black pepper",
       "Transfer the mixture to a 9x13 inch baking dish",
@@ -53,7 +53,7 @@ export const fakeRecipes: Recipe[] = [
       "1/2 tsp salt",
       "1/4 tsp. black pepper",
     ],
-    directions: [
+    steps: [
       "Preheat oven to 375 degrees F (190 degrees C)",
       "In a large bowl, combine chicken, potatoes, onion, green pepper, garlic, olive oil, salt, and black pepper",
       "Transfer the mixture to a 9x13 inch baking dish",
@@ -73,7 +73,7 @@ export const fakeRecipes: Recipe[] = [
       "1/2 tsp salt",
       "1/4 tsp. black pepper",
     ],
-    directions: [
+    steps: [
       "Preheat oven to 375 degrees F (190 degrees C)",
       "In a large bowl, combine chicken, potatoes, onion, green pepper, garlic, olive oil, salt, and black pepper",
       "Transfer the mixture to a 9x13 inch baking dish",
@@ -93,7 +93,7 @@ export const fakeRecipes: Recipe[] = [
       "1/2 tsp salt",
       "1/4 tsp. black pepper",
     ],
-    directions: [
+    steps: [
       "Preheat oven to 375 degrees F (190 degrees C)",
       "In a large bowl, combine chicken, potatoes, onion, green pepper, garlic, olive oil, salt, and black pepper",
       "Transfer the mixture to a 9x13 inch baking dish",

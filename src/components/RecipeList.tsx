@@ -6,12 +6,12 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const RecipeThumbnail = ({ recipe }: { recipe: Recipe }) => {
   const numIngredients = recipe.ingredients.length;
-  const numDirections = recipe.directions.length;
+  const numSteps = recipe.steps.length;
   return (
-    <div className="flex cursor-pointer items-center gap-2 border-2 border-gray-600 p-8 ">
+    <div className="flex cursor-pointer items-center gap-2 rounded-md border-2 border-gray-600 p-8">
       <Avatar size="small" icon={<CoffeeOutlined />} />
       <p>
-        <span>{numDirections}</span> directions
+        <span>{numSteps}</span> steps
       </p>
       <p>
         <span>{numIngredients}</span> ingredients

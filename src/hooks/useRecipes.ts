@@ -1,5 +1,5 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
-import { fakeRecipes } from "../test/recipe";
 import type { Recipe } from "../types/recipe";
 
 export default function useRecipes() {
@@ -7,8 +7,14 @@ export default function useRecipes() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setRecipes(fakeRecipes);
-    setIsLoading(false);
+    setIsLoading(true);
+    axios
+      .get("https://mchacksbackend.vercel.app/testController/samplerecipe")
+      .then((res) => {
+        const recipe = res.data as unknown as Recipe;
+        setRecipes([recipe]);
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
   return { recipes, isLoading };
