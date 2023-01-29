@@ -7,14 +7,14 @@ import {
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import Link from "next/link";
 import React from "react";
-import useRecipes from "../hooks/useRecipes";
+import useListenRecipes from "../hooks/useListenRecipes";
 import AboutUsOverlay from "./AboutUsOverlay";
 import HowItWorks from "./HowItWorks";
 
 export const Navbar = () => {
   const [howModalOpen, setHowModalOpen] = React.useState(false);
   const [aboutModalOpen, setAboutModalOpen] = React.useState(false);
-  const { recipes } = useRecipes();
+  const { recipes } = useListenRecipes();
   const [ref] = useAutoAnimate<HTMLElement>();
 
   const hasRecipes = recipes.length > 0;

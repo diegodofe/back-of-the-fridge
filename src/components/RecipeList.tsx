@@ -17,7 +17,7 @@ const RecipeThumbnail = ({ recipe }: { recipe: Recipe }) => {
       />
 
       <div className="flex flex-col justify-between gap-2 p-2">
-        <h5 className="text-center text-xl">{recipe.title}</h5>
+        <h5 className="text-md text-center">{recipe.title}</h5>
 
         <div className="flex justify-evenly">
           <p>

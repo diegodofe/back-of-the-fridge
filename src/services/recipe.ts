@@ -1,9 +1,11 @@
+import { Group } from "antd/es/avatar";
 import {
   addDoc,
   collection,
   doc,
   getDoc,
   getDocs,
+  onSnapshot,
   query,
 } from "firebase/firestore";
 import { db } from "../../firebase";
@@ -11,6 +13,24 @@ import type { Recipe } from "../types/recipe";
 
 export async function createRecipe(userId: string, recipe: Recipe) {
   return await addDoc(collection(db, `users/${userId}/recipes`), recipe);
+}
+
+export function listenToRecipes({
+  userId,
+  cb,
+}: {
+  userId: string;
+  cb: (recipes: Recipe[]) => void;
+}) {
+  const q = query(collection(db, `users/${userId}/recipes`));
+
+  return onSnapshot(q, (querySnapshot) => {
+    const groups: Recipe[] = [];
+    querySnapshot.forEach((docSnap) => {
+      groups.push({ id: docSnap.id, ...docSnap.data() } as unknown as Recipe);
+    });
+    cb(groups);
+  });
 }
 
 export async function getRecipeById(userId: string, recipeId: string) {
