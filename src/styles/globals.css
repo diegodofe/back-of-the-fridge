@@ -2,21 +2,168 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400&display=swap');
+
+body {
+  font-family: 'Titillium' 'Dosis', 'Open Sans', serif;
+  font-weight: 200;
+}
+
 .navbar {
-  background-color: #95a5a6;
-  max-width: 150px;
+  background-color: #1A1C1E;
+  max-width: 180px;
   display: flex;
   flex-direction: column;
+}
+
+.logo-cntr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 10px;
+  background-color: #009432;
+}
+
+.navbar__header {
+  font-size: 12px;
+  font-weight: 200;
+  color: ;
+  margin-left: 10px;
+  color: #95a5a6;
 }
 
 .navbar__item {
   padding: 5px 15px;
   cursor: pointer;
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 300;
+  color: white;
+  display: flex;
+  align-items: center;
 }
 
+.navbar__item__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  font-weight: 800;
+}
+
+
 .navbar__item:hover {
-  background-color: #00784A;
+  background-color: #009432;
   color: white;
+}
+
+.ingredients-page {
+  padding: 50px;
+}
+
+.ingredients-page__title {
+  font-size: 30px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.add-ingredient-form {
+  display: flex;
+}
+
+.add-ingredient-form__input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.add-ingredient-form__input {
+  outline-color: #009432;
+}
+
+.add-ingredient-form__button {
+  background-color: #009432;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.ingredient-item__header {
+  font-size: 9px;
+  color: #95a5a6;
+  margin-bottom: 5px;
+}
+
+.ingredient-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  border: 1px solid #00784A;
+  border-radius: 5px;
+}
+
+.ingredient-item__text {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.ingredient-item:hover {
+  border-color: black;
+  cursor: pointer;
+}
+
+.ingredient-item__button {
+  margin-right: 15px;
+}
+
+.trash-icon {
+  color: #e74c3c;
+  font-size: 25px;
+}
+
+.image-uploader {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  height: 100vh;
+}
+
+.or-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #95a5a6;
+}
+
+.or-divider__text {
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.or-divider__line-top {
+  height: 80px;
+  display: flex;
+}
+
+.or-divider__line-bottom {
+  height: 100%;
+  display: flex;
+}
+
+.or-divider__line__left {
+  border-right: 1px dashed lightgrey;
+  background-color: blue2;
+  flex: 1;
+}
+
+.or-divider__line__right {
+  flex: 1;
+  background-color: blue;
 }
