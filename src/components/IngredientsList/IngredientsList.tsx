@@ -54,7 +54,7 @@ function IngredientsList({
             setNewIngredient(e.target.value);
           }}
           value={newIngredient}
-          placeholder="e.g: pasta, garlic, spinach, etc..."
+          placeholder="e.g: pasta, tomato, spinach, etc..."
         />
         <div style={{ width: "5px" }} />
         <button

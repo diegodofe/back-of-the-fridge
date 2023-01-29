@@ -16,10 +16,10 @@ const RecipeThumbnail = ({ recipe }: { recipe: Recipe }) => {
         preview={false}
       />
 
-      <div className="flex flex-col gap-2 p-2 align-middle">
-        <h5 className="text-center text-lg">{recipe.title}</h5>
+      <div className="flex flex-col justify-between gap-2 p-2">
+        <h5 className="text-center text-xl">{recipe.title}</h5>
 
-        <div className="flex justify-evenly ">
+        <div className="flex justify-evenly">
           <p>
             <span className="font-extrabold">{numSteps}</span> steps
           </p>

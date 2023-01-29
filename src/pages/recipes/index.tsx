@@ -40,7 +40,7 @@ const Recipes: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Recipes</title>
+        <title>Back of the fridge | Recipes</title>
         <meta name="description" content="Make recipes with AI" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -50,7 +50,7 @@ const Recipes: NextPage = () => {
         </div>
 
         <div className="flex flex-1 flex-col p-12">
-          <h3 className="mb-6 text-2xl font-bold">Your recipes</h3>
+          <h3 className="mb-6 text-3xl font-bold">Your recipes</h3>
 
           <RecipeList onRecipeSelect={setSelectedRecipe} />
         </div>

@@ -2,10 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400&display=swap");
-
 body {
-  font-family: "Titillium" "Dosis", "Open Sans", serif;
+  font-family: monospace !important;
   font-weight: 200;
 }
 
