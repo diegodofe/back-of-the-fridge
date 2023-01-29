@@ -28,7 +28,7 @@ function IngredientsList({
   return (
     <>
       <div ref={ref} className="ingredients-page">
-        <h2 className="ingredients-page__title">Input My Ingredients</h2>
+        <h2 className="ingredients-page__title">Input your ingredients</h2>
         {ingredients.map((ingredient, index) => (
           <Ingredient
             // eslint-disable-next-line react/no-array-index-key

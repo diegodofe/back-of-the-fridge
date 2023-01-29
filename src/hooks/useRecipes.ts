@@ -12,7 +12,7 @@ export default function useRecipes() {
       .get("https://mchacksbackend.vercel.app/testController/samplerecipe")
       .then((res) => {
         const recipe = res.data as unknown as Recipe;
-        setRecipes([recipe]);
+        setRecipes([recipe, recipe, recipe, recipe]);
       })
       .finally(() => setIsLoading(false));
   }, []);

@@ -37,7 +37,7 @@ export const RecipeDetails = ({ recipe }: { recipe: Recipe | undefined }) => {
       <div>
         <h4 className="mb-1 font-semibold">Steps</h4>
         <ul>
-          {recipe.steps.map((step, index) => (
+          {recipe.directions.map((step, index) => (
             <li key={step}>
               <div className="flex gap-2 align-top">
                 <p className="mr-1 font-bold text-gray-500">{index + 1}</p>
