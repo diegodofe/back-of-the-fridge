@@ -32,52 +32,50 @@ function IngredientsList({
   };
 
   return (
-    <>
-      <div ref={ref} className="ingredients-page">
-        <h2 className="ingredients-page__title">Input your ingredients</h2>
-        {ingredients.map((ingredient, index) => (
-          <Ingredient
-            key={ingredient}
-            index={index}
-            ingredient={ingredient}
-            handleDeleteIngredient={handleDeleteIngredient}
-          />
-        ))}
+    <div ref={ref} className="ingredients-page">
+      <h2 className="ingredients-page__title">Input your ingredients</h2>
+      {ingredients.map((ingredient, index) => (
+        <Ingredient
+          key={ingredient}
+          index={index}
+          ingredient={ingredient}
+          handleDeleteIngredient={handleDeleteIngredient}
+        />
+      ))}
 
-        <form
-          className="add-ingredient-form"
-          onSubmit={(e) => e.preventDefault()}
-        >
-          <input
-            className="add-ingredient-form__input"
-            type="text"
-            onChange={(e) => {
-              setNewIngredient(e.target.value);
-            }}
-            value={newIngredient}
-            placeholder="e.g: apple, onion, etc..."
-          />
-          <div style={{ width: "5px" }} />
-          <button
-            className="add-ingredient-form__button"
-            type="submit"
-            onClick={handleAddIngredient}
-            value={newIngredient}
-          >
-            <PlusCircleOutlined />
-            <div style={{ width: "5px" }} />
-            Add
-          </button>
-        </form>
+      <form
+        className="add-ingredient-form"
+        onSubmit={(e) => e.preventDefault()}
+      >
+        <input
+          className="add-ingredient-form__input"
+          type="text"
+          onChange={(e) => {
+            setNewIngredient(e.target.value);
+          }}
+          value={newIngredient}
+          placeholder="e.g: pasta, garlic, spinach, etc..."
+        />
+        <div style={{ width: "5px" }} />
         <button
-          disabled={disableSubmit}
-          className={disableSubmit ? "button-disabled" : "button-enabled"}
-          onClick={handleGenerateRecepit}
+          className="add-ingredient-form__button"
+          type="submit"
+          onClick={handleAddIngredient}
+          value={newIngredient}
         >
-          Generate Recipe
+          <PlusCircleOutlined />
+          <div style={{ width: "5px" }} />
+          Add
         </button>
-      </div>
-    </>
+      </form>
+      <button
+        disabled={disableSubmit}
+        className={disableSubmit ? "button-disabled" : "button-enabled"}
+        onClick={handleGenerateRecepit}
+      >
+        Generate Recipe
+      </button>
+    </div>
   );
 }
 

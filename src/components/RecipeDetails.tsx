@@ -8,7 +8,7 @@ export const RecipeDetails = ({ recipe }: { recipe: Recipe | undefined }) => {
     <div className="flex gap-8">
       <div className="flex-1">
         <Image
-          src={"https://picsum.photos/500"}
+          src={recipe.linkUrl}
           alt={recipe.title + "photo"}
           style={{ objectFit: "cover", width: "100%" }}
           height={500}

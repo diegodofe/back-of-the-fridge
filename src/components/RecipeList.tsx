@@ -10,7 +10,7 @@ const RecipeThumbnail = ({ recipe }: { recipe: Recipe }) => {
   return (
     <div className="flex flex-col align-middle">
       <Image
-        src={"https://picsum.photos/500"}
+        src={recipe.linkUrl}
         alt={recipe.title + "photo"}
         style={{ objectFit: "cover", maxHeight: 200 }}
         preview={false}

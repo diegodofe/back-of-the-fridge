@@ -15,7 +15,7 @@ const Recipes: NextPage = () => {
   useEffect(() => {
     const data = router.query;
     const invalidQuery =
-      !data?.directions || !data?.ingredients || !data?.title;
+      !data?.directions || !data?.ingredients || !data?.title || !data.linkUrl;
     if (invalidQuery) return;
 
     const ingredientsType = typeof data.ingredients;
@@ -29,6 +29,7 @@ const Recipes: NextPage = () => {
       title: data.title as string,
       ingredients,
       directions: data.directions as string[],
+      linkUrl: data.linkUrl as string,
     });
   }, [router.query]);
 
