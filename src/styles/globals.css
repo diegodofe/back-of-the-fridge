@@ -217,3 +217,14 @@ body {
   flex: 1;
   background-color: blue;
 }
+
+.loader {
+  margin-top: 150px;
+  border-radius: 150px;
+  padding: 50px;
+  background-color: white;
+  width: 300px;
+  height: 300px;
+  border: 1px solid #009432;
+  ;
+}
