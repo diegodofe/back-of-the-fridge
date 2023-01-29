@@ -48,10 +48,8 @@ const Recipes: NextPage = () => {
         <div key={selectedRecipe?.title}>
           <RecipeDetails recipe={selectedRecipe} />
         </div>
-
         <div className="flex flex-1 flex-col p-12">
           <h3 className="mb-6 text-3xl font-bold">Your recipes</h3>
-
           <RecipeList onRecipeSelect={setSelectedRecipe} />
         </div>
       </main>

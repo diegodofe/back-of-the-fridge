@@ -1,12 +1,9 @@
-import type { UploadFile } from "antd";
 import { message } from "antd";
 import axios from "axios";
-import { ref, uploadBytes } from "firebase/storage";
 import { type NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
-import { storage } from "../../firebase";
 import { ImageUploaderMenu } from "../components/ImageUploaderMenu";
 import IngredientsList from "../components/IngredientsList/IngredientsList";
 import { LoaderOverlay } from "../components/LoaderOverlay";
@@ -19,6 +16,8 @@ const url =
   "https://mchacksbackend.vercel.app/cohereAdapterController/generatesampleprompt";
 
 const Home: NextPage = () => {
+  const [ingredients, setIngredients] = useState<string[]>([]);
+
   const user = useContext(UserContext);
   const router = useRouter();
   const [showLoader, setShowLoader] = useState<boolean>(false);
@@ -52,28 +51,42 @@ const Home: NextPage = () => {
       .finally(() => setShowLoader(false));
   };
 
-  const handleGenerateRecipeWithImage = (file: UploadFile) => {
-    setShowLoader(true);
-    const userFileLocation = `${file.name}`;
-    const imageRef = ref(storage, userFileLocation);
+  const handleGenerateRecipeWithImage = (ing: string) => {
+    console.log("Generating recipe..." + ing);
 
-    void file.originFileObj
-      ?.arrayBuffer()
-      .then((bytes) => {
-        if (bytes) {
-          void uploadBytes(imageRef, bytes);
-          void router.push({
-            pathname: "/recipes",
-          });
-        }
-      })
-      .catch(() => {
-        void messageApi.open({
-          type: "error",
-          content: "Failed to create a recipe",
-        });
-      })
-      .finally(() => setShowLoader(false));
+    // make sure ing starts with "demo_"
+    if (!ing.startsWith("demo_")) {
+      // throw error
+      void messageApi.open({
+        type: "error",
+        content: "Failed to upload image",
+      });
+      return;
+    }
+    // remove "demo_" from ing
+    ing = ing.substring(5);
+
+    // remove the .png or .jpg from ing if it is at the end
+    if (ing.endsWith(".png")) {
+      ing = ing.substring(0, ing.length - 4);
+    } else if (ing.endsWith(".jpg")) {
+      ing = ing.substring(0, ing.length - 4);
+    } else {
+      // throw error
+      void messageApi.open({
+        type: "error",
+        content: "Failed to upload image",
+      });
+      return;
+    }
+
+    // add ing to ingredients
+    // set the timeout for 2.5 seconds
+    setShowLoader(true);
+    setTimeout(() => {
+      setIngredients([...ingredients, ing]);
+      setShowLoader(false);
+    }, 3500);
   };
 
   return (
@@ -91,7 +104,11 @@ const Home: NextPage = () => {
         }}
       >
         <div style={{ flex: 1 }}>
-          <IngredientsList onGenerateRecipe={handleGenerateRecipe} />
+          <IngredientsList
+            ingredients={ingredients}
+            setIngredients={setIngredients}
+            onGenerateRecipe={handleGenerateRecipe}
+          />
         </div>
         <OrDivider />
         <div style={{ flex: 1 }}>
