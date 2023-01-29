@@ -1,14 +1,18 @@
-import { PlusCircleOutlined } from "@ant-design/icons";
-import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { useState } from "react";
+import {PlusCircleOutlined} from "@ant-design/icons";
+import {useAutoAnimate} from "@formkit/auto-animate/react";
+import {useState} from "react";
 import Ingredient from "./Ingreditent";
 
 function IngredientsList({
+  ingredients,
+  setIngredients,
   onGenerateRecipe,
 }: {
+  ingredients: string[],
+  setIngredients: (ingredients: string[]) => void,
   onGenerateRecipe: (ingredients: string[]) => void;
 }) {
-  const [ingredients, setIngredients] = useState<string[]>([]);
+  // const [ingredients, setIngredients] = useState<string[]>([]);
   const [newIngredient, setNewIngredient] = useState<string>("");
   const [ref] = useAutoAnimate<HTMLElement>();
 
@@ -56,7 +60,7 @@ function IngredientsList({
           value={newIngredient}
           placeholder="e.g: pasta, garlic, spinach, etc..."
         />
-        <div style={{ width: "5px" }} />
+        <div style={{width: "5px"}} />
         <button
           className="add-ingredient-form__button"
           type="submit"
@@ -64,7 +68,7 @@ function IngredientsList({
           value={newIngredient}
         >
           <PlusCircleOutlined />
-          <div style={{ width: "5px" }} />
+          <div style={{width: "5px"}} />
           Add
         </button>
       </form>
