@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { fakeRecipes } from "../test/recipe";
-import type { Recipe } from "../types/recipe";
+import {useEffect, useState} from "react";
+import {fakeRecipes} from "../test/recipe";
+import type {Recipe} from "../types/recipe";
 
 export default function useRecipes() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -11,5 +11,5 @@ export default function useRecipes() {
     setIsLoading(false);
   }, []);
 
-  return { recipes, isLoading };
+  return {recipes, isLoading};
 }
