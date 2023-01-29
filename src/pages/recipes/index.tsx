@@ -43,13 +43,7 @@ const Recipes: NextPage = () => {
         <meta name="description" content="Make recipes with AI" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex">
-        <div className="flex flex-1 flex-col p-12">
-          <h3 className="mb-6 text-2xl font-bold">Your recipes</h3>
-
-          <RecipeList onRecipeSelect={setSelectedRecipe} />
-        </div>
-
+      <main className="flex flex-col">
         <div className="flex-1 p-12">
           <div ref={ref}>
             <RecipeDetails
@@ -57,6 +51,12 @@ const Recipes: NextPage = () => {
               recipe={selectedRecipe}
             />
           </div>
+        </div>
+
+        <div className="flex flex-1 flex-col p-12">
+          <h3 className="mb-6 text-2xl font-bold">Your recipes</h3>
+
+          <RecipeList onRecipeSelect={setSelectedRecipe} />
         </div>
       </main>
     </>

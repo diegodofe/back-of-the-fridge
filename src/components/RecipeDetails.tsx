@@ -3,9 +3,7 @@ import React from "react";
 import type { Recipe } from "../types/recipe";
 
 export const RecipeDetails = ({ recipe }: { recipe: Recipe | undefined }) => {
-  if (!recipe) {
-    return <p>Select a recipe</p>;
-  }
+  if (!recipe) return null;
   return (
     <div className="flex flex-col gap-4">
       <div className="flex justify-between">
