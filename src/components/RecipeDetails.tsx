@@ -11,7 +11,7 @@ export const RecipeDetails = ({ recipe }: { recipe: Recipe | undefined }) => {
           src={"https://picsum.photos/500"}
           alt={recipe.title + "photo"}
           style={{ objectFit: "cover", width: "100%" }}
-          height="75%"
+          height={500}
           width="100%"
           preview={false}
         />

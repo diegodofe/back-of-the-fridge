@@ -1,16 +1,20 @@
+import type { UploadFile } from "antd";
+import { message } from "antd";
 import axios from "axios";
+import { Blob } from "buffer";
+import { ref, uploadBytes } from "firebase/storage";
 import { type NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
+import { storage } from "../../firebase";
 import { ImageUploaderMenu } from "../components/ImageUploaderMenu";
 import IngredientsList from "../components/IngredientsList/IngredientsList";
 import { LoaderOverlay } from "../components/LoaderOverlay";
 import OrDivider from "../components/OrDivider";
-import type { Recipe } from "../types/recipe";
-import { message } from "antd";
-import { UserContext } from "./_app";
 import { createRecipe } from "../services/recipe";
+import type { Recipe } from "../types/recipe";
+import { UserContext } from "./_app";
 
 const url =
   "https://mchacksbackend.vercel.app/cohereAdapterController/generatesampleprompt";
@@ -33,11 +37,34 @@ const Home: NextPage = () => {
           const createdRecipe = res.data as unknown as Recipe;
 
           void createRecipe(user.id, createdRecipe).then((docRef) => {
-            const docId = docRef.id;
             void router.push({
               pathname: "/recipes",
               query: { ...createdRecipe },
             });
+          });
+        }
+      })
+      .catch(() => {
+        void messageApi.open({
+          type: "error",
+          content: "Failed to create a recipe",
+        });
+      })
+      .finally(() => setShowLoader(false));
+  };
+
+  const handleGenerateRecipeWithImage = (file: UploadFile) => {
+    setShowLoader(true);
+    const userFileLocation = `${file.name}`;
+    const imageRef = ref(storage, userFileLocation);
+
+    void file.originFileObj
+      ?.arrayBuffer()
+      .then((bytes) => {
+        if (bytes) {
+          void uploadBytes(imageRef, bytes);
+          void router.push({
+            pathname: "/recipes",
           });
         }
       })
@@ -69,7 +96,7 @@ const Home: NextPage = () => {
         </div>
         <OrDivider />
         <div style={{ flex: 1 }}>
-          <ImageUploaderMenu />
+          <ImageUploaderMenu onImageSubmit={handleGenerateRecipeWithImage} />
         </div>
       </main>
     </>
