@@ -1,10 +1,10 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
-import { RecipeList } from "../../components/RecipeList";
-import { RecipeDetails } from "../../components/RecipeThumbnail";
 import type { Recipe } from "../../types/recipe";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { RecipeList } from "../../components/RecipeList";
+import { RecipeDetails } from "../../components/RecipeDetails";
 
 const Recipes: NextPage = () => {
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe>();
@@ -18,15 +18,13 @@ const Recipes: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex">
-        <div className="flex flex-1 flex-col">
+        <div className="flex flex-1 flex-col p-12">
           <h2>Your recipes</h2>
 
           <RecipeList onRecipeSelect={setSelectedRecipe} />
         </div>
 
-        <div className="flex-1">
-          <h2>Details</h2>
-
+        <div className="flex-1 p-12">
           <div ref={ref}>
             <RecipeDetails
               key={selectedRecipe?.title}
