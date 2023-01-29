@@ -8,7 +8,7 @@ const RecipeThumbnail = ({ recipe }: { recipe: Recipe }) => {
   const numIngredients = recipe.ingredients.length;
   const numSteps = recipe.directions.length;
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col align-middle">
       <Image
         src={"https://picsum.photos/500"}
         alt={recipe.title + "photo"}
@@ -16,13 +16,17 @@ const RecipeThumbnail = ({ recipe }: { recipe: Recipe }) => {
         preview={false}
       />
 
-      <div className="flex justify-evenly p-4">
-        <p>
-          <span className="font-extrabold">{numSteps}</span> steps
-        </p>
-        <p>
-          <span className="font-extrabold">{numIngredients}</span> ingredients
-        </p>
+      <div className="flex flex-col gap-2 p-2 align-middle">
+        <h5 className="text-center text-lg">{recipe.title}</h5>
+
+        <div className="flex justify-evenly ">
+          <p>
+            <span className="font-extrabold">{numSteps}</span> steps
+          </p>
+          <p>
+            <span className="font-extrabold">{numIngredients}</span> ingredients
+          </p>
+        </div>
       </div>
     </div>
   );

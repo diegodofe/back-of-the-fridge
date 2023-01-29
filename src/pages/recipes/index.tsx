@@ -1,13 +1,27 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Recipe } from "../../types/recipe";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { RecipeList } from "../../components/RecipeList";
 import { RecipeDetails } from "../../components/RecipeDetails";
+import { useRouter } from "next/router";
 
 const Recipes: NextPage = () => {
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe>();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const data = router.query as unknown as Recipe;
+    const invalidQuery =
+      !data?.directions || !data?.ingredients || !data?.title;
+    if (invalidQuery) return;
+    setSelectedRecipe(data);
+  }, [router.query]);
+
+  console.log(selectedRecipe);
+
   const [ref] = useAutoAnimate<HTMLElement>();
 
   return (

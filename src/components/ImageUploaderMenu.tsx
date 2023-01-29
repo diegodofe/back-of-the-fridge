@@ -37,7 +37,7 @@ export function ImageUploaderMenu() {
           Click or drag file to this area to upload
         </p>
       </Dragger>
-      <button className="upload-button">
+      <button className="button-enabled">
         Upload <div style={{ width: "5px" }}></div>
         <UploadOutlined />
       </button>
