@@ -25,7 +25,23 @@ function IngredientsList({
   };
 
   const handleAddIngredient = () => {
-    if (newIngredient.length > 0) {
+    // If newIngredient contains a comma, split it into multiple ingredients
+    if (newIngredient.includes(",") && newIngredient.length > 0) {
+      const newIngredients = newIngredient.split(",");
+      // Remove empty strings
+      newIngredients.filter((ingredient) => ingredient !== "");
+
+      // trim any whitespace
+      newIngredients.map((ingredient) => ingredient.trim());
+
+      // Remove duplicates
+      const uniqueIngredients = newIngredients.filter(
+        (ingredient, index) => newIngredients.indexOf(ingredient) === index
+      );
+
+      setIngredients([...ingredients, ...newIngredients]);
+      setNewIngredient("");
+    } else if (newIngredient.length > 0) {
       setIngredients([...ingredients, newIngredient]);
       setNewIngredient("");
     }
