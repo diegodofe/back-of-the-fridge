@@ -56,7 +56,7 @@ function IngredientsList({
       <h2 className="ingredients-page__title">Input your ingredients</h2>
       {ingredients.map((ingredient, index) => (
         <Ingredient
-          key={ingredient}
+          key={ingredient + index.toString()}
           index={index}
           ingredient={ingredient}
           handleDeleteIngredient={handleDeleteIngredient}
