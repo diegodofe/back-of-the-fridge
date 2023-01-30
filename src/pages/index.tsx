@@ -1,16 +1,16 @@
-import { message } from "antd";
+import {message} from "antd";
 import axios from "axios";
-import { type NextPage } from "next";
+import {type NextPage} from "next";
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { useContext, useState } from "react";
-import { ImageUploaderMenu } from "../components/ImageUploaderMenu";
+import {useRouter} from "next/router";
+import {useContext, useState} from "react";
+import {ImageUploaderMenu} from "../components/ImageUploaderMenu";
 import IngredientsList from "../components/IngredientsList/IngredientsList";
-import { LoaderOverlay } from "../components/LoaderOverlay";
+import {LoaderOverlay} from "../components/LoaderOverlay";
 import OrDivider from "../components/OrDivider";
-import { createRecipe } from "../services/recipe";
-import type { Recipe } from "../types/recipe";
-import { UserContext } from "./_app";
+import {createRecipe} from "../services/recipe";
+import type {Recipe} from "../types/recipe";
+import {UserContext} from "./_app";
 
 const url =
   "https://mchacksbackend.vercel.app/cohereAdapterController/generatesampleprompt";
@@ -37,7 +37,7 @@ const Home: NextPage = () => {
           void createRecipe(user.id, createdRecipe).then((docRef) => {
             void router.push({
               pathname: "/recipes",
-              query: { ...createdRecipe },
+              query: {...createdRecipe},
             });
           });
         }
@@ -45,7 +45,7 @@ const Home: NextPage = () => {
       .catch(() => {
         void messageApi.open({
           type: "error",
-          content: "Failed to create a recipe",
+          content: "please try again, sometimes it may take a few trys :) (this is a free service)",
         });
       })
       .finally(() => setShowLoader(false));
@@ -103,7 +103,7 @@ const Home: NextPage = () => {
           display: "flex",
         }}
       >
-        <div style={{ flex: 1 }}>
+        <div style={{flex: 1}}>
           <IngredientsList
             ingredients={ingredients}
             setIngredients={setIngredients}
@@ -111,7 +111,7 @@ const Home: NextPage = () => {
           />
         </div>
         <OrDivider />
-        <div style={{ flex: 1 }}>
+        <div style={{flex: 1}}>
           <ImageUploaderMenu onImageSubmit={handleGenerateRecipeWithImage} />
         </div>
       </main>
