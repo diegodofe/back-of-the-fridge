@@ -4,7 +4,7 @@ import {
   QuestionOutlined,
   TeamOutlined,
 } from "@ant-design/icons";
-import { useAutoAnimate } from "@formkit/auto-animate/react";
+import {useAutoAnimate} from "@formkit/auto-animate/react";
 import Link from "next/link";
 import React from "react";
 import useListenRecipes from "../hooks/useListenRecipes";
@@ -14,7 +14,7 @@ import HowItWorks from "./HowItWorks";
 export const Navbar = () => {
   const [howModalOpen, setHowModalOpen] = React.useState(false);
   const [aboutModalOpen, setAboutModalOpen] = React.useState(false);
-  const { recipes } = useListenRecipes();
+  const {recipes} = useListenRecipes();
   const [ref] = useAutoAnimate<HTMLElement>();
 
   const hasRecipes = recipes.length > 0;
@@ -37,7 +37,7 @@ export const Navbar = () => {
         <div className="logo-cntr">
           <img src="logo2.png" alt="logo" />
         </div>
-        <div style={{ height: "20px" }}></div>
+        <div style={{height: "20px"}}></div>
         <div className="navbar__header">content</div>
         <Link className="navbar__item" href="/">
           <div className="navbar__item__icon">
@@ -55,14 +55,14 @@ export const Navbar = () => {
             </Link>
           )}
         </div>
-        <div style={{ height: "10px" }}></div>
+        <div style={{height: "10px"}}></div>
         <div className="navbar__header">about</div>
-        <div onClick={handleOpenHowModal} className="navbar__item">
+        {/* <div onClick={handleOpenHowModal} className="navbar__item">
           <div className="navbar__item__icon">
             <QuestionOutlined />
           </div>
           How it works
-        </div>
+        </div> */}
         <div onClick={handleOpenAboutModal} className="navbar__item">
           <div className="navbar__item__icon">
             <TeamOutlined />
