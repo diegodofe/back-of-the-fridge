@@ -1,19 +1,84 @@
-import {PlusCircleOutlined} from "@ant-design/icons";
-import {useAutoAnimate} from "@formkit/auto-animate/react";
-import {useState} from "react";
-import Ingredient from "./Ingreditent";
+import { DeleteFilled, PlusCircleOutlined } from "@ant-design/icons";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { useState } from "react";
 
-function IngredientsList({
-  ingredients,
-  setIngredients,
+function Ingredient({
+  ingredient,
+  onDeleteClick,
+}: {
+  ingredient: string;
+  onDeleteClick: () => void;
+}) {
+  const [mouseIsIn, setMouseIsIn] = useState(false);
+  const [ref] = useAutoAnimate<HTMLElement>();
+
+  return (
+    <div
+      ref={ref}
+      className="ingredient-item"
+      onMouseEnter={() => setMouseIsIn(true)}
+      onMouseLeave={() => setMouseIsIn(false)}
+    >
+      <div className="ingredient-item__text">{ingredient}</div>
+      {mouseIsIn && (
+        <button
+          type="button"
+          className="ingredient-item__button"
+          onClick={onDeleteClick}
+        >
+          <DeleteFilled className="trash-icon" />
+        </button>
+      )}
+    </div>
+  );
+}
+
+function IngredientsForm({
+  onIngredientSubmit,
+}: {
+  onIngredientSubmit: (newIngredient: string) => void;
+}) {
+  const [inputtedIngredient, setInputtedIngredient] = useState("");
+
+  const handleSubmit = () => {
+    onIngredientSubmit(inputtedIngredient);
+    setInputtedIngredient("");
+  };
+
+  return (
+    <form
+      className="add-ingredient-form flex gap-3"
+      onSubmit={(e) => e.preventDefault()}
+    >
+      <input
+        className="add-ingredient-form__input"
+        type="text"
+        onChange={(e) => {
+          setInputtedIngredient(e.target.value);
+        }}
+        value={inputtedIngredient}
+        placeholder="e.g: pasta, tomato, spinach, etc..."
+      />
+
+      <button
+        className="add-ingredient-form__button"
+        type="submit"
+        onClick={handleSubmit}
+        value={inputtedIngredient}
+      >
+        <PlusCircleOutlined className="mr-4" />
+        Add
+      </button>
+    </form>
+  );
+}
+
+export default function IngredientsList({
   onGenerateRecipe,
 }: {
-  ingredients: string[],
-  setIngredients: (ingredients: string[]) => void,
   onGenerateRecipe: (ingredients: string[]) => void;
 }) {
-  // const [ingredients, setIngredients] = useState<string[]>([]);
-  const [newIngredient, setNewIngredient] = useState<string>("");
+  const [ingredients, setIngredients] = useState<string[]>([]);
   const [ref] = useAutoAnimate<HTMLElement>();
 
   const disableSubmit = ingredients.length === 0;
@@ -24,79 +89,43 @@ function IngredientsList({
     setIngredients(newIngredients);
   };
 
-  const handleAddIngredient = () => {
-    // If newIngredient contains a comma, split it into multiple ingredients
-    if (newIngredient.includes(",") && newIngredient.length > 0) {
+  const handleAddIngredient = (newIngredient: string) => {
+    if (newIngredient.length === 0) return;
+
+    const isMultipleIngredients = newIngredient.includes(",");
+
+    if (isMultipleIngredients) {
       const newIngredients = newIngredient.split(",");
       // Remove empty strings
-      newIngredients.filter((ingredient) => ingredient !== "");
+      // newIngredients.filter((ingredient) => ingredient !== "");
 
       // trim any whitespace
-      newIngredients.map((ingredient) => ingredient.trim());
+      // newIngredients.map((ingredient) => ingredient.trim());
 
-      // Remove duplicates
-      const uniqueIngredients = newIngredients.filter(
-        (ingredient, index) => newIngredients.indexOf(ingredient) === index
-      );
-
-      setIngredients([...ingredients, ...newIngredients]);
-      setNewIngredient("");
-    } else if (newIngredient.length > 0) {
-      setIngredients([...ingredients, newIngredient]);
-      setNewIngredient("");
+      // remove duplicates
     }
-  };
-
-  const handleGenerateRecepit = () => {
-    onGenerateRecipe(ingredients);
+    setIngredients([...ingredients, newIngredient]);
   };
 
   return (
-    <div ref={ref} className="ingredients-page">
-      <h2 className="ingredients-page__title">Input your ingredients</h2>
+    <div ref={ref}>
       {ingredients.map((ingredient, index) => (
         <Ingredient
           key={ingredient + index.toString()}
-          index={index}
           ingredient={ingredient}
-          handleDeleteIngredient={handleDeleteIngredient}
+          onDeleteClick={() => handleDeleteIngredient(index)}
         />
       ))}
 
-      <form
-        className="add-ingredient-form"
-        onSubmit={(e) => e.preventDefault()}
-      >
-        <input
-          className="add-ingredient-form__input"
-          type="text"
-          onChange={(e) => {
-            setNewIngredient(e.target.value);
-          }}
-          value={newIngredient}
-          placeholder="e.g: pasta, tomato, spinach, etc..."
-        />
-        <div style={{width: "5px"}} />
-        <button
-          className="add-ingredient-form__button"
-          type="submit"
-          onClick={handleAddIngredient}
-          value={newIngredient}
-        >
-          <PlusCircleOutlined />
-          <div style={{width: "5px"}} />
-          Add
-        </button>
-      </form>
+      <IngredientsForm onIngredientSubmit={handleAddIngredient} />
+
       <button
         disabled={disableSubmit}
         className={disableSubmit ? "button-disabled" : "button-enabled"}
-        onClick={handleGenerateRecepit}
+        onClick={() => onGenerateRecipe(ingredients)}
       >
         Generate Recipe
       </button>
     </div>
   );
 }
-
-export default IngredientsList;
