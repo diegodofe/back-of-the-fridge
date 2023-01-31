@@ -11,6 +11,7 @@ import OrDivider from "../components/OrDivider";
 import {createRecipe} from "../services/recipe";
 import type {Recipe} from "../types/recipe";
 import {UserContext} from "./_app";
+import HowItWorksAlt from "../components/HowItWorksAlt";
 
 const url =
   "https://mchacksbackend.vercel.app/cohereAdapterController/generatesampleprompt";
@@ -112,7 +113,8 @@ const Home: NextPage = () => {
         </div>
         <OrDivider />
         <div style={{flex: 1}}>
-          <ImageUploaderMenu onImageSubmit={handleGenerateRecipeWithImage} />
+          {/* <ImageUploaderMenu onImageSubmit={handleGenerateRecipeWithImage} /> */}
+          <HowItWorksAlt />
         </div>
       </main>
     </>
