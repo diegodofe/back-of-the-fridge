@@ -84,9 +84,9 @@ export default function IngredientsList({
   const disableSubmit = ingredients.length === 0;
 
   const handleDeleteIngredient = (index: number) => {
-    const newIngredients = [...ingredients];
-    newIngredients.splice(index, 1);
-    setIngredients(newIngredients);
+    const updatedIngredients = [...ingredients];
+    updatedIngredients.splice(index, 1);
+    setIngredients(updatedIngredients);
   };
 
   const handleAddIngredient = (newIngredient: string) => {
@@ -95,16 +95,25 @@ export default function IngredientsList({
     const isMultipleIngredients = newIngredient.includes(",");
 
     if (isMultipleIngredients) {
-      const newIngredients = newIngredient.split(",");
-      // Remove empty strings
-      // newIngredients.filter((ingredient) => ingredient !== "");
+      const newIngredients = newIngredient
+        .split(",")
+        .map((ingredient) => ingredient.trim())
+        .filter((ingredient) => ingredient !== "");
 
-      // trim any whitespace
-      // newIngredients.map((ingredient) => ingredient.trim());
+      const allIngredients = ingredients.concat(newIngredients);
 
-      // remove duplicates
+      const uniqueIngredients = allIngredients.filter(
+        (item, idx) => allIngredients.indexOf(item) === idx
+      );
+
+      setIngredients(uniqueIngredients);
+    } else {
+      const ingredientAlreadyExists = ingredients.includes(newIngredient);
+
+      if (ingredientAlreadyExists) return;
+
+      setIngredients([...ingredients, newIngredient]);
     }
-    setIngredients([...ingredients, newIngredient]);
   };
 
   return (

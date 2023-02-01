@@ -33,8 +33,6 @@ const Recipes: NextPage = () => {
     });
   }, [router.query]);
 
-  console.log(selectedRecipe);
-
   const [ref] = useAutoAnimate<HTMLElement>();
 
   return (
