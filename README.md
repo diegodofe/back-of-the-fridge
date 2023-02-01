@@ -13,7 +13,7 @@
 
 Back of the Fridge is a recipe website that helps users find recipes based on the ingredients they have on hand. It provides a user-friendly, efficient and easy-to-use solution for users to find recipes based on the ingredients they have on hand. Built in under 24 hours during [McHacks10](https://devpost.com/software/back-of-the-fridge?ref_content=my-projects-tab&ref_feature=my_projects)!
 
-The front-end was built with React.js, Next.js, and TailwindCSS! The back-end was built with Python, Flask and CockroachDB. This repo is our web-app's front-end, so be sure to checkout our [back-end](https://github.com/arikaufman/McHack10-BackOfTheFridge-BackEnd) too! 
+The front-end was built with React.js, Next.js, and TailwindCSS! The back-end was built with Python and Flask. Everything is hosted on Vercel! This repo is our web-app's front-end, so be sure to checkout our [back-end](https://github.com/arikaufman/McHack10-BackOfTheFridge-BackEnd) too! 
 
 ## Showcase
 
