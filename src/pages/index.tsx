@@ -5,7 +5,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import HowItWorksAlt from "../components/HowItWorksAlt";
-import IngredientsList from "../components/IngredientsList/IngredientsList";
+import IngredientsOverview from "../components/IngredientsOverview";
 import { LoaderOverlay } from "../components/LoaderOverlay";
 import OrDivider from "../components/OrDivider";
 import { createRecipe } from "../services/recipe";
@@ -97,14 +97,15 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {showLoader && <LoaderOverlay />}
-      <main className="flex">
-        <div className="ingredients-page flex-1">
-          <h2 className="ingredients-page__title">Input your ingredients</h2>
-          <IngredientsList onGenerateRecipe={handleGenerateRecipe} />
+      <main className="flex h-full">
+        <div className="flex-1 p-12">
+          <h2 className="mb-4 text-3xl">Input your ingredients</h2>
+          <IngredientsOverview onGenerateRecipe={handleGenerateRecipe} />
         </div>
         <OrDivider />
-        <div className="flex-1">
+        <div className="flex-1 p-12">
           {/* <ImageUploaderMenu onImageSubmit={handleGenerateRecipeWithImage} /> */}
+          <h2 className="mb-4 text-3xl">How it works</h2>
           <HowItWorksAlt />
         </div>
       </main>

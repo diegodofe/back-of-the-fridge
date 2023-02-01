@@ -46,10 +46,7 @@ function IngredientsForm({
   };
 
   return (
-    <form
-      className="add-ingredient-form flex gap-3"
-      onSubmit={(e) => e.preventDefault()}
-    >
+    <form className="flex gap-3" onSubmit={(e) => e.preventDefault()}>
       <input
         className="add-ingredient-form__input"
         type="text"
@@ -73,7 +70,7 @@ function IngredientsForm({
   );
 }
 
-export default function IngredientsList({
+export default function IngredientsOverview({
   onGenerateRecipe,
 }: {
   onGenerateRecipe: (ingredients: string[]) => void;

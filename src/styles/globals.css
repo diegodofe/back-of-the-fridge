@@ -52,20 +52,6 @@ body {
   color: white;
 }
 
-.ingredients-page {
-  padding: 50px;
-}
-
-.ingredients-page__title {
-  font-size: 30px;
-  font-weight: 300;
-  margin-bottom: 20px;
-}
-
-.add-ingredient-form {
-  display: flex;
-}
-
 .add-ingredient-form__input {
   width: 100%;
   padding: 10px;
@@ -173,13 +159,6 @@ body {
 
 .generate-button:hover {
   background-color: #006823;
-}
-
-.image-uploader {
-  display: flex;
-  flex-direction: column;
-  padding: 50px;
-  height: 100vh;
 }
 
 .or-divider {
