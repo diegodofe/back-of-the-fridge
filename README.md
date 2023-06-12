@@ -26,7 +26,7 @@ The front-end was built with React.js, Next.js, and TailwindCSS! The back-end wa
 ## Overview
 
 ### Inspiration
-The idea for the website came about when Alex was feeling hungry, but he didn't want to go to the store. He still wanted to make a dish with tzatziki, couscous and onions, but he tried searching online for a recipe and couldn't find one that fit his specific ingredients. That's when he decided to enter the ingredients into a language model like ChatGPT and found a recipe that looked delicious!
+The idea for the website came about when Alex was feeling hungry, but he didn't want to go to the store. He still wanted to make a dish with tzatziki, couscous, and onions, but he tried searching online for a recipe and couldn't find one that fit his specific ingredients. That's when he decided to enter the ingredients into a language model like ChatGPT and found a recipe that looked delicious!
 
 ### Details
 To create a recipe using cohere, we give cohere our ingredients, then cohere returns to us a recipe title, instructions, and a list of ingredients used. We then take that title and give it to Surp API. Surp API then asks google for the top ranking images associated with that title. We pull down one of the top images and pass that up with the recipe object to the front end.
